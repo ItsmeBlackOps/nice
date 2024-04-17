@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="owl.carousel.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Table #2</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="container">
+            <h2 class="mb-5">Table #2</h2>
+            <div class="table-responsive">
+                <table id="custom-table" class="table custom-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Occupation</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Education</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table body will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON('https://fragile-lamb-beret.cyclic.app/', function (data) {
+                var tableBody = $('#custom-table tbody');
+                $.each(data, function (index, job) {
+                    var row = $('<tr>');
+                    row.append($('<td>').text(job.hiringManager));
+                    row.append($('<td>').text(job.managerEmail));
+                    row.append($('<td>').text(job.title));
+                    row.append($('<td>').html('<a href="' + job.job_url + '">' + job.job_url + '</a>'));
+                    row.append($('<td>').text(job.updated_at));
+                    tableBody.append(row);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
