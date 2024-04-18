@@ -25,6 +25,7 @@
                             <th scope="col">Job Title</th>
                             <th scope="col">URL</th>
                             <th scope="col">Updated AT</th>
+                            <th scope="col">Location</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,7 @@
                     row.append($('<td>').text(job.title));
                     row.append($('<td>').html('<a href="' + job.job_url + '">' + job.job_url + '</a>'));
                     row.append($('<td>').text(job.updated_at));
+                    row.append($('<td>').text(job.location));
                     tableBody.append(row);
                 });
             });
