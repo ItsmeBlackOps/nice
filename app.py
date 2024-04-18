@@ -29,14 +29,27 @@ def get_jobs():
     jobs = []
 
     for job in data['jobs']:
-        job_info = {
-            "hiringManager": job['metadata'][1]['value']['name'],
-            "managerEmail": job['metadata'][1]['value']['email'],
-            "title": job['title'],
-            "job_url": job['absolute_url'],
-            "updated_at": job['updated_at']
-        }
-        jobs.append(job_info)
+        if 'USA' in job['location']['name']:
+            if 'metadata' in job and len(job['metadata']) > 1:
+                hiring_manager_info = job['metadata'][1]['value']
+                job_info = {
+                    "hiringManager": hiring_manager_info.get('name', 'N/A'),
+                    "managerEmail": hiring_manager_info.get('email', 'N/A'),
+                    "title": job['title'],
+                    "job_url": job['absolute_url'],
+                    "updated_at": job['updated_at'],
+                    "location": job['location']['name']
+                }
+            else:
+                job_info = {
+                    "hiringManager": 'N/A',
+                    "managerEmail": 'N/A',
+                    "title": job.get('title', 'N/A'),
+                    "job_url": job.get('absolute_url', 'N/A'),
+                    "updated_at": job.get('updated_at', 'N/A'),
+                    "location": job['location']['name']
+                }
+            jobs.append(job_info)
 
     return jsonify(jobs)
 
