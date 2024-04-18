@@ -32,6 +32,7 @@ def get_jobs():
         if 'USA' in job['location']['name']:
             if 'metadata' in job and len(job['metadata']) > 1:
                 hiring_manager_info = job['metadata'][1]['value']
+                role = job['metadata'][3]['value']
                 job_info = {
                     "hiringManager": hiring_manager_info.get('name', 'N/A'),
                     "managerEmail": hiring_manager_info.get('email', 'N/A'),
@@ -39,7 +40,7 @@ def get_jobs():
                     "job_url": job['absolute_url'],
                     "updated_at": job['updated_at'],
                     "location": job['location']['name'],
-                    "role": data['metadata'][3]['value']
+                    "role": role
                 }
             else:
                 job_info = {
@@ -49,8 +50,7 @@ def get_jobs():
                     "job_url": job.get('absolute_url', 'N/A'),
                     "updated_at": job.get('updated_at', 'N/A'),
                     "location": job['location']['name'],
-                    "role": "NA",
-                    "role": data['metadata'][3]['value']
+                    "role": role
                 }
             jobs.append(job_info)
 
