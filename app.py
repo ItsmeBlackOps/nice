@@ -38,7 +38,8 @@ def get_jobs():
                     "title": job['title'],
                     "job_url": job['absolute_url'],
                     "updated_at": job['updated_at'],
-                    "location": job['location']['name']
+                    "location": job['location']['name'],
+                    "Role of Hiring Manager": data['jobs'][0]['metadata'][3]['value']
                 }
             else:
                 job_info = {
@@ -47,7 +48,8 @@ def get_jobs():
                     "title": job.get('title', 'N/A'),
                     "job_url": job.get('absolute_url', 'N/A'),
                     "updated_at": job.get('updated_at', 'N/A'),
-                    "location": job['location']['name']
+                    "location": job['location']['name'],
+                    "Role of Hiring Manager": data['jobs'][0]['metadata'][3]['value']
                 }
             jobs.append(job_info)
 
