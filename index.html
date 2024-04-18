@@ -22,6 +22,7 @@
                         <tr>
                             <th scope="col">Hiring Manager</th>
                             <th scope="col">Manager Email</th>
+                            <th scope="col">Role of Manager</th>
                             <th scope="col">Job Title</th>
                             <th scope="col">URL</th>
                             <th scope="col">Updated AT</th>
@@ -45,6 +46,7 @@
                     var row = $('<tr>');
                     row.append($('<td>').text(job.hiringManager));
                     row.append($('<td>').text(job.managerEmail));
+                    row.append($('<td>').text(job.role));
                     row.append($('<td>').text(job.title));
                     row.append($('<td>').html('<a href="' + job.job_url + '">' + job.job_url + '</a>'));
                     row.append($('<td>').text(job.updated_at));
