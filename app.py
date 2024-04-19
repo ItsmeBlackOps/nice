@@ -25,7 +25,6 @@ def get_jobs():
 
     response = requests.get(url, headers=headers)
     data = response.json()
-    
     jobs = []
 
     for job in data['jobs']:
@@ -55,6 +54,7 @@ def get_jobs():
             jobs.append(job_info)
 
     return jsonify(jobs)
+
 
 if __name__ == '__main__':
     app.run(debug=False)
